@@ -266,7 +266,7 @@ electrolyzer.recipeBuilder()
 chemical_reactor.recipeBuilder()
     .fluidInputs(<liquid:ammonia> * 1000, <liquid:hydrochloric_acid> * 1000)
     .circuit(5)
-    .outputs(<metaitem:dustAmmoniumChloride> * 2)
+    .outputs(<metaitem:dustAmmoniumChloride> * 6)
     .duration(120).EUt(7).buildAndRegister();
 
 //blast_furnace.recipeBuilder()
@@ -517,10 +517,10 @@ centrifuge.recipeBuilder()
 
 // Platinum
 chemical_reactor.recipeBuilder()
-    .inputs(<metaitem:dustAmmoniumChloride> * 8)
-    .fluidInputs(<liquid:platinum_palladium_leachate> * 1000)
+    .inputs(<metaitem:dustAmmoniumChloride> * 30)
+    .fluidInputs(<liquid:platinum_palladium_leachate> * 1000, <liquid:hydrogen> * 3000)
     .outputs(<metaitem:nomilabs:dustAmmoniumHexachloroplatinate> * 9, <metaitem:nomilabs:dustCrudePlatinumResidue>)
-    .fluidOutputs(<liquid:palladium_rich_ammonia> * 1000)
+    .fluidOutputs(<liquid:palladium_rich_ammonia> * 1000, <liquid:water> * 3000)
     .duration(1200).EUt(30).buildAndRegister();
 
 electrolyzer.recipeBuilder()
@@ -529,16 +529,16 @@ electrolyzer.recipeBuilder()
     .duration(30).EUt(30).buildAndRegister();
 
 distillery.recipeBuilder()
-    .fluidInputs(<liquid:chloroplatinic_acid> * 1000)
+    .fluidInputs(<liquid:chloroplatinic_acid> * 2000)
     .circuit(1)
-    .outputs(<metaitem:dustPlatinumRaw> * 2)
+    .outputs(<metaitem:dustPlatinumRaw> * 10)
     .fluidOutputs(<liquid:hydrochloric_acid> * 4000)
     .duration(120).EUt(30).buildAndRegister();
 
 autoclave.recipeBuilder()
-    .inputs(<metaitem:dustPlatinumRaw> * 3, <metaitem:dustCalcium>)
+    .inputs(<metaitem:dustPlatinumRaw> * 5, <metaitem:dustCalcium> * 2)
     .fluidInputs(<liquid:steam> * 3840)
-    .outputs(<metaitem:dustPlatinum>, <metaitem:dustCalciumChloride> * 3)
+    .outputs(<metaitem:dustPlatinum>, <metaitem:dustCalciumChloride> * 6)
     .fluidOutputs(<liquid:water> * 24)
     .duration(30).EUt(30).buildAndRegister();
 
@@ -581,52 +581,53 @@ sifter.recipeBuilder()
 
 // Rhodium
 blast_furnace.recipeBuilder()
-    .inputs(<metaitem:nomilabs:dustPlatinumGroupResidue>, <metaitem:nomilabs:dustPotassiumPyrosulfate> * 11)
-    .outputs(<metaitem:dustRhodiumSulfate>, <metaitem:nomilabs:dustPotassiumSulfate> * 14, <metaitem:nomilabs:dustIridiumGroupSludge>)
+    .inputs(<metaitem:nomilabs:dustPlatinumGroupResidue>, <metaitem:nomilabs:dustPotassiumPyrosulfate> * 33)
+    .fluidInputs(<liquid:oxygen> * 3000)
+    .outputs(<metaitem:dustRhodiumSulfate> * 4, <metaitem:nomilabs:dustPotassiumSulfate> * 21, <metaitem:nomilabs:dustIridiumGroupSludge> * 3)
     .property("temperature", 1048)
     .duration(200).EUt(120).buildAndRegister();
 
 chemical_bath.recipeBuilder()
-    .inputs(<metaitem:dustRhodiumSulfate> * 6)
-    .fluidInputs(<liquid:water> * 2000)
-    .outputs(<metaitem:nomilabs:dustIridiumGroupSludge>)
+    .inputs(<metaitem:dustRhodiumSulfate> * 4)
+    .fluidInputs(<liquid:water> * 1000)
+    .outputs(<metaitem:nomilabs:dustIridiumGroupSludge> * 3)
     .fluidOutputs(<liquid:rhodium_sulfate_solution> * 2000)
     .duration(300).EUt(30).buildAndRegister();
 
 chemical_reactor.recipeBuilder()   
     .inputs(<metaitem:dustZinc> * 3)
-    .fluidInputs(<liquid:rhodium_sulfate_solution> * 1000)
-    .outputs(<metaitem:nomilabs:dustZincSulfate> * 18, <metaitem:nomilabs:dustCrudeRhodiumResidue>)
+    .fluidInputs(<liquid:rhodium_sulfate_solution> * 2000)
+    .outputs(<metaitem:nomilabs:dustZincSulfate> * 18, <metaitem:nomilabs:dustCrudeRhodiumResidue>*3)
     .duration(300).EUt(30).buildAndRegister();
 
 blast_furnace.recipeBuilder()
-    .inputs(<metaitem:nomilabs:dustCrudeRhodiumResidue>, <metaitem:dustSalt> * 4)
+    .inputs(<metaitem:nomilabs:dustCrudeRhodiumResidue> *     3, <metaitem:dustSalt> * 4)
     .fluidInputs(<liquid:chlorine> * 6000)
-    .outputs(<metaitem:nomilabs:dustRhodiumSalt>)
+    .outputs(<metaitem:nomilabs:dustRhodiumSalt> * 4)
     .fluidOutputs(<liquid:steam> * 9600)
     .property("temperature", 848)
     .duration(300).EUt(120).buildAndRegister();
 
 chemical_reactor.recipeBuilder()
-    .inputs(<metaitem:nomilabs:dustSodiumNitrate> * 30, <metaitem:nomilabs:dustRhodiumSalt>)
-    .notConsumable(<liquid:water> * 8000)
-    .outputs(<metaitem:nomilabs:dustRhodiumNitrate> * 26, <metaitem:dustSalt> * 16)
+    .inputs(<metaitem:nomilabs:dustSodiumNitrate> * 30, <metaitem:nomilabs:dustRhodiumSalt> * 4)
+    .outputs(<metaitem:nomilabs:dustRhodiumNitrate> * 8, <metaitem:dustSalt> * 16)
     .duration(300).EUt(30).buildAndRegister();
 
 chemical_reactor.recipeBuilder()
-    .inputs(<metaitem:nomilabs:dustRhodiumNitrate> * 13, <metaitem:dustPotassium> * 3)
+    .inputs(<metaitem:nomilabs:dustRhodiumNitrate> * 4, <metaitem:dustPotassium> * 3)
     .outputs(<metaitem:dustRhodium>, <metaitem:dustSaltpeter> * 15)
     .duration(300).EUt(30).buildAndRegister();
 
 // Ruthenium
 blast_furnace.recipeBuilder()
-    .inputs(<metaitem:nomilabs:dustIridiumGroupSludge>, <metaitem:dustSodaAsh> * 2)
-    .outputs(<metaitem:nomilabs:dustSodiumRuthenate> * 2, <metaitem:dustAsh>, <metaitem:dustRarestMetalMixture>)
+    .inputs(<metaitem:nomilabs:dustIridiumGroupSludge> * 3, <metaitem:dustSodaAsh> * 6)
+    .fluidInputs(<liquid:oxygen> * 5000)
+    .outputs(<metaitem:nomilabs:dustSodiumRuthenate> * 7, <metaitem:dustAsh>, <metaitem:dustRarestMetalMixture> * 6)
     .property("temperature", 1023)
     .duration(200).EUt(120).buildAndRegister();
 
 chemical_reactor.recipeBuilder()
-    .inputs(<metaitem:nomilabs:dustSodiumRuthenate> * 6)
+    .inputs(<metaitem:nomilabs:dustSodiumRuthenate> * 7)
     .fluidInputs(<liquid:chlorine> * 2000, <liquid:water> * 2000)
     .outputs(<metaitem:dustRutheniumTetroxide> * 5)
     .fluidOutputs(<liquid:salt_water> * 2000)
@@ -641,7 +642,7 @@ chemical_reactor.recipeBuilder()
 
 // Osmium
 chemical_bath.recipeBuilder()
-    .inputs(<metaitem:dustRarestMetalMixture>)
+    .inputs(<metaitem:dustRarestMetalMixture> * 6)
     .fluidInputs(<liquid:hydrochloric_acid> * 1000)
     .outputs(<metaitem:dustIridiumMetalResidue>)
     .fluidOutputs(<liquid:acidic_osmium_solution> * 1000)
@@ -649,7 +650,7 @@ chemical_bath.recipeBuilder()
 
 distillation_tower.recipeBuilder()
     .fluidInputs(<liquid:acidic_osmium_solution> * 2000)
-    .outputs(<metaitem:dustOsmiumTetroxide>)
+    .outputs(<metaitem:dustOsmiumTetroxide> * 10)
     .fluidOutputs(<liquid:hydrochloric_acid> * 2000)
     .duration(150).EUt(7680).buildAndRegister();
 
@@ -674,10 +675,10 @@ mixer.recipeBuilder()
     .duration(300).EUt(30).buildAndRegister();
 
 chemical_reactor.recipeBuilder()
-    .inputs(<metaitem:dustAmmoniumChloride>)
-    .fluidInputs(<liquid:acidic_iridium_dioxide_solution> * 4000)
-    .outputs(<metaitem:nomilabs:dustAmmoniumHexachloroiridiate> * 2, <metaitem:nomilabs:dustSmallPlatinumGroupResidue>)
-    .fluidOutputs(<liquid:water> * 2000)
+    .inputs(<metaitem:dustAmmoniumChloride> * 48)
+    .fluidInputs(<liquid:acidic_iridium_dioxide_solution> * 16000, <liquid:hydrochloric_acid> * 12000)
+    .outputs(<metaitem:nomilabs:dustAmmoniumHexachloroiridiate> * 36, <metaitem:nomilabs:dustPlatinumGroupResidue>)
+    .fluidOutputs(<liquid:water> * 8000)
     .duration(300).EUt(30).buildAndRegister();
 
 chemical_reactor.recipeBuilder()
